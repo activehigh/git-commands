@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source "$(git --exec-path)/git-sh-setup"
+
+cp $cwd/git-commit-template.txt ./
+echo "copying git-commit-template.txt ... done"
+cp $cwd/prepare-commit-msg ./.git/hooks/
+echo "copying prepare-commit-msg ... done"
