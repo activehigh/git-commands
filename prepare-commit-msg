@@ -26,7 +26,7 @@ SHA1=$3
 
 #/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
 
-ISSUE=$(git symbolic-ref HEAD | sed -n -e 's/.*\/\(feature\|hotfix\|bugfix\|warmfix\)\/\([a-zA-Z].*[0-9]\).*/\2/p')
+ISSUE=$(git symbolic-ref HEAD | sed -n -e 's/.*\/\(feature\|hotfix\|bugfix\|warmfix\)\/\([a-zA-Z]\+\-[0-9]\+\).*/\2/p')
 sed -i.bak "1s/^/\[$ISSUE\] /" "$COMMIT_MSG_FILE"
 
 # case "$COMMIT_SOURCE,$SHA1" in
