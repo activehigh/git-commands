@@ -1,0 +1,13 @@
+#!/bin/bash
+
+MESSAGE=$1
+if [ -z "$MESSAGE" ]; then
+  read -p "No commit message provided. Please enter a commit message: " MESSAGE
+  exit 1
+fi
+
+BRANCH=$(git branch --show-current)
+
+git add . || { echo "Failed to add files to staging area"; exit 1; }
+git commit -m "${MESSAGE}" || { echo "Failed to commit changes"; exit 1; }
+git push --set-upstream origin "${BRANCH}" || { echo "Failed to push changes to remote repository"; exit 1; }

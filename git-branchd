@@ -1,0 +1,10 @@
+#!/bin/bash
+
+MESSAGE=$1
+if [ -z "$MESSAGE" ]; then
+  echo "branch name is needed"
+  exit 1
+fi
+git checkout master
+git pull --prune
+git checkout -b "$MESSAGE"

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DEFAULT=${1:-"master"}
+MESSAGE=$2
+if [ -z "${MESSAGE}" ]; then
+  MESSAGE="$(date)"
+fi
+
+# Stage changes and commit with the provided or default message
+git add . && git commit -m "${MESSAGE}"
+
+# Get the current branch name
+BRANCH=$(git branch --show-current)
+
+# Ensure the branch is being tracked and push changes
+git push --set-upstream origin "${BRANCH}"
+
